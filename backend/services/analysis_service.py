@@ -4,11 +4,11 @@ DATA_PATH = "data/processed/olist_feature_ready_dataset.csv"
 
 
 def compute_competitor_prices(df):
-    #Average price per product (all sellers)
+    # Average price per product (all sellers)
     avg_price = df.groupby("product_id")["item_price"].mean().reset_index()
     avg_price.rename(columns={"item_price": "competitor_price"}, inplace=True)
 
-    #Merge back
+    # Merge back
     df = df.merge(avg_price, on="product_id", how="left")
 
     return df
@@ -50,8 +50,28 @@ def analyze_product(row):
 def get_analysis():
     df = pd.read_csv(DATA_PATH)
 
+    # Compute full dataset stats BEFORE slicing
+    total_products = len(df)
+    avg_price = df["item_price"].mean()
+    min_price = df["item_price"].min()
+    max_price = df["item_price"].max()
+
+    # Apply competitor logic
     df = compute_competitor_prices(df)
 
-    df = df.head(20)
+    # Take small sample for frontend charts
+    sample_df = df.head(20)
 
-    return [analyze_product(row) for _, row in df.iterrows()]
+    analyzed_data = [
+        analyze_product(row) for _, row in sample_df.iterrows()
+    ]
+
+    return {
+        "data": analyzed_data,
+        "summary": {
+            "total_products": int(total_products),
+            "avg_price": round(avg_price, 2),
+            "min_price": round(min_price, 2),
+            "max_price": round(max_price, 2),
+        },
+    }

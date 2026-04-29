@@ -19,7 +19,7 @@ from ml.models.elasticity import calculate_elasticity
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, BASE_DIR)
 
-# create app ONLY ONCE
+# create app
 app = FastAPI()
 
 # load model
@@ -39,7 +39,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ---------------- ROUTES ---------------- #
 
