@@ -8,3 +8,5 @@ data/raw/*.csv
 data/processed/*.csv
 artifacts/
 !.env.example
+*.pyc
+price_plot.png
