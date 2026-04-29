@@ -7,15 +7,15 @@ Current implementation focus: US-01 to US-05 for the Olist Brazilian E-Commerce 
 1. Copy `.env.example` to `.env`.
 2. Put the 9 Olist CSV files in `data/raw/`.
 3. Install dependencies:
-
+from root directory
 ```powershell
-pip install -r req.txt
+pip install -r requirements.txt
 ```
 
 4. Run the US-01 to US-05 pipeline:
-
+from root directory
 ```powershell
-python run_us01_us05.py
+python -m ml.run_us01_us05 
 ```
 
 ## Outputs
