@@ -5,7 +5,7 @@ import Analysis from "./pages/Analysis";
 import Predict from "./pages/Predict";
 import Optimize from "./pages/Optimize";
 import Summary from "./pages/Summary";
-
+import Adjust from "./pages/Adjust";
 function App() {
   const [page, setPage] = useState("Dashboard");
 
@@ -19,6 +19,8 @@ function App() {
         return <Optimize />;
       case "Summary":
         return <Summary />;
+      case "Adjust":
+        return <Adjust />;
       default:
         return <Dashboard />;
     }

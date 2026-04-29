@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const tabs = ["Dashboard", "Analysis", "Predict", "Optimize", "Summary"];
+const tabs = ["Dashboard", "Analysis", "Predict", "Optimize", "Summary","Adjust"];
 
 const Navbar = ({ setPage }: any) => {
   const [active, setActive] = useState("Dashboard");
