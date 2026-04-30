@@ -24,7 +24,7 @@ const Table = ({ data }: Props) => {
       <tbody>
         {data.map((item, index) => (
           <tr
-            key={item.product_id || index}
+            key={`${item.product_id}-${item.seller_id}-${index}`}
             className={`text-center ${
               item.status === "Higher"
                 ? "bg-red-100"
