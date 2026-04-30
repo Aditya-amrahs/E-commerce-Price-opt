@@ -10,3 +10,4 @@ artifacts/
 !.env.example
 *.pyc
 price_plot.png
+ml.zip
