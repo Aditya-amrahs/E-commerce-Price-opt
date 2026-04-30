@@ -42,6 +42,7 @@ app.add_middleware(
 
 # ---------------- ROUTES ---------------- #
 
+
 @app.get("/")
 def home():
     return {"message": "API is working"}
@@ -66,14 +67,16 @@ def get_price(index: int = 0):
 
     final_price = adjust_price(prediction, demand)
 
-    # generate chart
-    sample_prices = data["freight_value"].iloc[index:index+20].tolist()
+    start = index
+    end = index + 20
+    sample_prices = data["freight_value"].iloc[start:end].tolist()
+
     plot_prices(sample_prices)
 
     return {
         "base_price": float(prediction),
         "final_price": float(final_price),
-        "message": "Chart saved as price_plot.png"
+        "message": "Chart saved as price_plot.png",
     }
 
 
@@ -85,5 +88,5 @@ def adjust(predicted_price: float, demand: int):
     return {
         "predicted_price": predicted_price,
         "demand": demand,
-        "adjusted_price": adjusted
+        "adjusted_price": adjusted,
     }
