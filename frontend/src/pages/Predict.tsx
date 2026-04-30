@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "../components/Card";
+import { apiUrl } from "../lib/api";
 
 const Predict = () => {
   const [index, setIndex] = useState("");
@@ -11,7 +12,7 @@ const Predict = () => {
 
     setLoading(true);
 
-    fetch(`http://127.0.0.1:8000/price?index=${index}`)
+    fetch(apiUrl(`/price?index=${index}`))
       .then((res) => res.json())
       .then((res) => {
         setResult(res);

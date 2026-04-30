@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "../components/Card";
+import { apiUrl } from "../lib/api";
 
 const Adjust = () => {
   const [price, setPrice] = useState("");
@@ -9,9 +10,7 @@ const Adjust = () => {
   const handleAdjust = () => {
     if (!price || !demand) return;
 
-    fetch(
-      `http://127.0.0.1:8000/adjust?predicted_price=${price}&demand=${demand}`
-    )
+    fetch(apiUrl(`/adjust?predicted_price=${price}&demand=${demand}`))
       .then((res) => res.json())
       .then((res) => setResult(res));
   };

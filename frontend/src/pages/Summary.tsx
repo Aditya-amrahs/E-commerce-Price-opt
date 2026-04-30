@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
+import { apiUrl } from "../lib/api";
 
 const Summary = () => {
   const [data, setData] = useState<any[]>([]);
   const [summary, setSummary] = useState<any>(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/analysis")
+    fetch(apiUrl("/analysis"))
       .then((res) => res.json())
       .then((res) => {
         setData(res.data || []);

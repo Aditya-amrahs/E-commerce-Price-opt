@@ -1,0 +1,15 @@
+.git
+.venv
+frontend/node_modules
+frontend/dist
+__pycache__
+**/__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.mypy_cache
+.env
+ml.zip
+*.pdf
+*.png

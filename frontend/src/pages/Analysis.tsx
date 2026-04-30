@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Table from "../components/Table";
+import { apiUrl } from "../lib/api";
 
 const Analysis = () => {
   const [data, setData] = useState<any[]>([]);
@@ -8,7 +9,7 @@ const Analysis = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/analysis")
+    fetch(apiUrl("/analysis"))
       .then((res) => res.json())
       .then((res) => {
         setData(res.data || []);

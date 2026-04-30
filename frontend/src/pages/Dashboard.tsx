@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import PriceChart from "../components/PriceChart";
+import { apiUrl } from "../lib/api";
 
 const Dashboard = () => {
   const [data, setData] = useState<any[]>([]);
@@ -10,7 +11,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // ✅ Fetch analysis (data + summary)
-    fetch("http://127.0.0.1:8000/analysis")
+    fetch(apiUrl("/analysis"))
       .then((res) => res.json())
       .then((res) => {
         setData(res.data || []);
@@ -20,11 +21,9 @@ const Dashboard = () => {
       .catch(() => setLoading(false));
 
     // ✅ Generate backend chart
-    fetch("http://127.0.0.1:8000/price?index=0")
+    fetch(apiUrl("/price?index=0"))
       .then(() => {
-        setChartUrl(
-          `http://127.0.0.1:8000/static/price_plot.png?t=${Date.now()}`
-        );
+        setChartUrl(`${apiUrl("/static/price_plot.png")}?t=${Date.now()}`);
       });
   }, []);
 

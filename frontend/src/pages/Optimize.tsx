@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "../components/Card";
+import { apiUrl } from "../lib/api";
 
 const Optimize = () => {
   const [data, setData] = useState<any>(null);
@@ -9,7 +10,7 @@ const Optimize = () => {
     try {
       setLoading(true);
 
-      const res = await fetch("http://127.0.0.1:8000/optimize");
+      const res = await fetch(apiUrl("/optimize"));
       const result = await res.json();
 
       setData(result);
