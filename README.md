@@ -1,6 +1,17 @@
 # E-Commerce Price Optimization Engine
 
-Current implementation focus: US-01 to US-05 for the Olist Brazilian E-Commerce dataset.
+## Project Overview
+
+E-Commerce Price Optimization Engine is an end-to-end analytics platform designed to provide intelligent, data-driven pricing strategies for e-commerce. Based on the Olist Brazilian E-Commerce dataset, it enables:
+
+- **Machine Learning-based price optimization:** Predict optimal prices using advanced models and business rules.
+- **Competitor & product analysis:** Compare each product’s price with market averages and get actionable improvement recommendations.
+- **Interactive dashboard:** Visualize price trends, demand, and model performance insights.
+- **REST API (FastAPI):** Query price suggestions and analytics programmatically.
+- **Modern React frontend:** User-friendly UI to view recommendations, analysis, and reports.
+- **Modular, scalable codebase:** Clean separation for data pipeline, backend API, and frontend visualization.
+
+---
 
 ## Setup
 
@@ -39,3 +50,63 @@ DATABASE_URL=mssql+pyodbc://localhost/olist_price_opt?driver=ODBC+Driver+18+for+
 ```
 
 The fallback `sqlite:///artifacts/local_dev.db` is only for quick local testing.
+
+---
+
+## Backend Execution (FastAPI)
+
+To run the backend REST API locally:
+
+```bash
+cd backend
+uvicorn main:app --reload
+```
+
+- Access FastAPI docs and endpoints at: http://localhost:8000
+- Main endpoints:
+  - `/`: Health check
+  - `/analysis`: Product price analysis
+  - `/optimize`: Model optimization metrics
+  - `/price`: Get price recommendation and trend plot
+  - `/adjust`: Price adjustment by predicted price & demand
+
+---
+
+## Frontend Execution (React)
+
+To run the React frontend locally:
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+- Visit http://localhost:3000 in your browser to view the dashboard and interact with analytics.
+- The frontend connects automatically to the backend API for predictions, analysis, and charts.
+
+---
+
+## Project Structure
+
+```
+E-commerce-Price-opt/
+├── data/
+├── artifacts/
+├── backend/
+├── ml/
+├── frontend/
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## References
+
+- **Olist Brazilian E-Commerce Dataset:**  
+  https://www.kaggle.com/olistbr/brazilian-ecommerce
+
+---
+
+For questions, open an issue or PR on GitHub: https://github.com/Aditya-amrahs/E-commerce-Price-opt.
